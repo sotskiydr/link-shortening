@@ -1,0 +1,6 @@
+{
+  "port": 7777,
+  "jwtSecret":  "mern",
+  "mongoUri": "mongodb+srv://sotskiydr:PlayerDR11@cluster0.tuxvo.mongodb.net/mern?retryWrites=true&w=majority",
+  "baseUrl": "http://localhost:7777"
+}
