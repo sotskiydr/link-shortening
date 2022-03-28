@@ -1,14 +1,11 @@
 const express = require('express')
-const config = require('config')
 const mongoose = require('mongoose')
 const path = require('path')
 require('dotenv').config()
-const cors = require('cors')
 
 const app = express()
-const PORT = config.get('port') || 7777
+const PORT = process.env.PORT || 7777
 
-app.use(cors)
 app.use(express.json());
 app.use('/api/auth', require('./routes/auth.routes.js'))
 app.use('/api/link', require('./routes/link.routes.js'))
@@ -25,7 +22,7 @@ if(process.env.NODE_ENV === 'production'){
 
 async function start(){
     try {
-        await mongoose.connect(config.get('mongoUri'), {
+        await mongoose.connect(process.env.mongoUri, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })

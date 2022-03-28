@@ -1,7 +1,6 @@
  const {Router} = require('express')
  const bcrypt = require('bcryptjs')
  const jwt = require('jsonwebtoken')
- const config = require('config')
  const {check , validationResult} = require('express-validator')
  const User = require('../models/User.js')
  const router = Router()
@@ -56,7 +55,7 @@
          }
          const token = jwt.sign( // создаю токен с помощью 'jsonwebtoken'
              {userId: user.id}, // получаю id
-             config.get('jwtSecret'), // получаю секретную строку
+             process.env.jwtSecret, // получаю секретную строку
              {expiresIn: '1h'} // ограничение токена по времени
          )
          res.json({token , userId: user.id,message: 'User is logged in'})
