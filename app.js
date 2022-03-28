@@ -13,8 +13,8 @@ app.use('/t', require('./routes/redirect.routes.js'))
 
 if(process.env.NODE_ENV === 'production'){
     app.use('/', express.static(path.join(__dirname, 'client', 'build')))
-    app.get('*', (res, req) => {
-        res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    app.get('*', (req, res) => {
+        req.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })
 }
 
